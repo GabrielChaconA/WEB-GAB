@@ -362,6 +362,23 @@ img {
     object-fit: contain;
 }
 
+/* Contenedor de la imagen de DevStar en 'Hello' (Hero) */
+.hero-devstar-logo-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px; /* Ajusta este valor para cambiar el tamaño del logo en Hello */
+    height: 26px; /* Ajusta este valor para cambiar el tamaño del logo en Hello */
+    overflow: hidden;
+}
+
+/* Imagen de DevStar en 'Hello' (Hero) */
+.hero-devstar-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
 .btn-primary {
     background: linear-gradient(135deg, var(--color-accent-violet) 0%, var(--color-accent-blue) 100%);
     color: white;
@@ -696,9 +713,13 @@ section {
     object-fit: cover;
 }
 
-.role-card:first-child .role-logo {
-    padding: 2px;
+/* Tamaño de la imagen de DevStar en la sección 'Where I worked' (Roles) */
+.role-logo.devstar-role-logo {
+    width: 100%;
+    height: 100%;
     object-fit: contain;
+    padding: 8px; /* Ajusta este padding (ej. 6px, 8px, 10px) para cambiar la distancia del círculo externo y que se vea igual al del Tec */
+    box-sizing: border-box;
 }
 
 .role-duration {
