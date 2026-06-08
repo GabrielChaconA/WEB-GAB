@@ -1528,7 +1528,8 @@ section {
     }
     
     .skills-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
     }
     
     .certifications-grid {
@@ -1630,6 +1631,10 @@ section {
         grid-template-columns: 1fr;
     }
     
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
     .roles-grid .role-card:last-child {
         grid-column: span 1;
     }
@@ -1666,8 +1671,25 @@ section {
         font-size: 2rem;
     }
     
-    .skills-grid {
-        grid-template-columns: 1fr;
+    .tabs-header-container {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+    
+    .tab-button {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
+    
+    .role-card {
+        padding: 30px 20px;
+    }
+    
+    .skills-category-card {
+        padding: 24px 20px;
     }
     
     .focus-container {
