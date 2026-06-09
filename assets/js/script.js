@@ -3,6 +3,14 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Force scroll to top on page load/refresh (if not loading a specific hash)
+    if (!window.location.hash) {
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+    }
+    
     initHeaderScroll();
     initMobileNav();
     initTabs();
