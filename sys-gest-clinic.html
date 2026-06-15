@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYS-GEST-CLINIC | Gabriel Chacón Portfolio</title>
+
+    <!-- Meta Description for SEO -->
+    <meta name="description"
+        content="Project details of SYS-GEST-CLINIC, a premium clinical appointment and patient record management system developed by Gabriel Chacón and Israel Ramírez.">
+    <meta name="author" content="Gabriel Chacón">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- Custom Style Overrides for Mobile-First Screenshots -->
+    <style>
+        .gallery-main {
+            aspect-ratio: auto;
+            height: 550px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(5, 8, 17, 0.6);
+        }
+        .gallery-main img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+            margin: 0 auto;
+        }
+        .gallery-thumbnails {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+        .gallery-thumb {
+            width: 70px;
+            height: 90px;
+            aspect-ratio: auto;
+            flex-shrink: 0;
+            background: rgba(5, 8, 17, 0.4);
+        }
+        .gallery-thumb img {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background Gradient Overlay & Grid -->
+    <div class="bg-grid"></div>
+    <div class="bg-radial"></div>
+
+    <!-- Navigation Header -->
+    <header class="main-header scrolled" id="header">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <span class="brand-text">Gabriel<span class="accent-dot">.</span>Chacón</span>
+            </a>
+
+            <div class="nav-actions">
+                <a href="index.html#portfolio-tabs" class="cta-btn-header" style="background: var(--bg-tertiary); border: 1px solid var(--color-glass-border); color: var(--color-text-primary); box-shadow: none;">
+                    ← Back to Portfolio
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main style="padding-bottom: 80px;">
+        <!-- Project Detail Header / Hero -->
+        <section class="project-detail-header">
+            <div class="section-container">
+                <div class="project-detail-meta">
+                    <span class="badge-tag primary">FastAPI</span>
+                    <span class="badge-tag secondary">React</span>
+                    <span class="badge-tag">PostgreSQL</span>
+                    <span class="badge-tag">Docker</span>
+                </div>
+                <h1 class="project-detail-title text-gradient">SYS-GEST-CLINIC</h1>
+                <p class="project-detail-subtitle">
+                    A comprehensive and premium digital solution designed to optimize and automate schedule control, patient records, and real-time operational reports in physical therapy and rehabilitation clinics.
+                </p>
+
+                <div class="project-detail-ctas">
+                    <a href="https://github.com/IsraelRamirezMorales/SYS-GEST-CLINIC.git" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                        View GitHub Repository
+                    </a>
+                    <a href="index.html#portfolio-tabs" class="btn btn-secondary">
+                        ← Return to Portfolio
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Grid Details -->
+        <section style="padding-top: 0;">
+            <div class="section-container">
+                <div class="project-detail-grid">
+                    
+                    <!-- Left Column: Media & Core Info -->
+                    <div class="detail-main-column">
+                        
+                        <!-- Interactive Screenshot Gallery -->
+                        <div class="gallery-container">
+                            <div class="gallery-main">
+                                <img id="main-gallery-image" src="assets/respository images/Gestion clinica/LOGIN.png" alt="Login Screen">
+                            </div>
+                            <div class="gallery-thumbnails">
+                                <div class="gallery-thumb active" data-large="assets/respository images/Gestion clinica/LOGIN.png">
+                                    <img src="assets/respository images/Gestion clinica/LOGIN.png" alt="Login Screen">
+                                </div>
+                                <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/HOME PAGE.png">
+                                    <img src="assets/respository images/Gestion clinica/HOME PAGE.png" alt="Main Dashboard">
+                                </div>
+                                <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/CALENDARIO.png">
+                                    <img src="assets/respository images/Gestion clinica/CALENDARIO.png" alt="Clinical Calendar">
+                                </div>
+                                <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/REGISTROS.png">
+                                    <img src="assets/respository images/Gestion clinica/REGISTROS.png" alt="Clinical Reports & Statistics">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 40px;">
+                            <!-- Purpose & Context -->
+                            <div class="detail-section-card">
+                                <h3 class="detail-section-title">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                                        <line x1="4" y1="22" x2="4" y2="15"></line>
+                                    </svg>
+                                    Project Purpose &amp; Context
+                                </h3>
+                                <div class="detail-description">
+                                    <p>
+                                        <strong>SYS-GEST-CLINIC</strong> was developed to support healthcare small and medium enterprises (SMEs) in transitioning towards full digital transformation. Many medical practices still rely heavily on paper logs or flat, disconnected spreadsheets prone to duplication and human error.
+                                    </p>
+                                    <p>
+                                        This solution introduces a centralized, high-performance database coupled with a sleek, minimalist frontend. The platform focuses on security, speed, and real-time operational efficiency to manage complex clinical schedules, patient profiles, and medical records seamlessly.
+                                    </p>
+                                    
+                                    <ul class="bullet-list">
+                                        <li><strong>Collision-Free Agenda:</strong> An automated validation algorithm prevents overlapping appointments across treatment areas and specialist schedules.</li>
+                                        <li><strong>Automated Ledger tracking:</strong> Instantly updates patient balances and records medical fees according to the therapies or rehab consultations scheduled.</li>
+                                        <li><strong>BI Dashboards:</strong> Synthesizes clinical metrics (attendance ratios, popular sessions, and individual specialist performance) into clear, actionable charts.</li>
+                                        <li><strong>Role Integration:</strong> Unifies administrative management and medical roles into a single secure access workflow.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Modules & Functionality -->
+                            <div class="detail-section-card">
+                                <h3 class="detail-section-title">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="7" height="7"></rect>
+                                        <rect x="14" y="3" width="7" height="7"></rect>
+                                        <rect x="14" y="14" width="7" height="7"></rect>
+                                        <rect x="3" y="14" width="7" height="7"></rect>
+                                    </svg>
+                                    Modules &amp; Technical Capabilities
+                                </h3>
+                                <div class="detail-description">
+                                    <p>
+                                        The application consists of four key architectural modules that guarantee system integrity and user ergonomics:
+                                    </p>
+
+                                    <div class="modes-grid">
+                                        <div class="mode-card">
+                                            <h4>Profiles &amp; Security</h4>
+                                            <p>Access control with roles for Clinic Directors and Therapists. Employs Bcrypt password hashing and features webcam integration for live avatar capture and cropping.</p>
+                                        </div>
+                                        <div class="mode-card">
+                                            <h4>Patient Files</h4>
+                                            <p>Maintains history records, insurance plans, referring physician notes, specific clinical details, and aggregates account balances dynamically.</p>
+                                        </div>
+                                        <div class="mode-card">
+                                            <h4>Smart Calendar</h4>
+                                            <p>Schedules standard clinical consultations, aquatic sessions, and manual therapies. Includes dynamic collision triggers to block overbooking in real-time.</p>
+                                        </div>
+                                        <div class="mode-card">
+                                            <h4>BI operational Stats</h4>
+                                            <p>Processes check-in/out records into charts. Displays treatment distributions, specialist metrics, and clinical efficiency reports.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Development Team -->
+                            <div class="detail-section-card">
+                                <h3 class="detail-section-title">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="9" cy="7" r="4"></circle>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                    </svg>
+                                    Development Team
+                                </h3>
+                                <div class="detail-description">
+                                    <p>
+                                        This project was professionally built and designed by:
+                                    </p>
+                                    <ul class="bullet-list">
+                                        <li>
+                                            <strong>Gabriel Chacón Arellano:</strong> Backend Developer &amp; Systems Architect. Responsible for server infrastructure, API development (FastAPI), database relational integrity triggers, PostgreSQL modeling, and Docker containerization.
+                                        </li>
+                                        <li>
+                                            <strong>Israel Ramírez Morales:</strong> Frontend Developer &amp; UI Specialist. Responsible for the modern interface design, React component architecture, premium responsive styling, real-time validations, and frontend performance optimizations.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: Sidebar Details -->
+                    <div class="detail-sidebar-column">
+                        
+                        <!-- Tech Stack Tags -->
+                        <div class="detail-section-card">
+                            <h3 class="detail-section-title">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                                Technologies Used
+                            </h3>
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px;">
+                                <span class="tag" style="background: rgba(139, 92, 246, 0.1); color: #c084fc; border-color: rgba(139, 92, 246, 0.2);">FastAPI</span>
+                                <span class="tag" style="background: rgba(59, 130, 246, 0.1); color: #60a5fa; border-color: rgba(59, 130, 246, 0.2);">React JS</span>
+                                <span class="tag">PostgreSQL</span>
+                                <span class="tag">Docker</span>
+                                <span class="tag">Python 3.12</span>
+                                <span class="tag">Bcrypt</span>
+                                <span class="tag">Vite</span>
+                                <span class="tag">Vanilla CSS</span>
+                                <span class="tag">Lucide Icons</span>
+                            </div>
+                        </div>
+
+                        <!-- Installation Commands -->
+                        <div class="detail-section-card">
+                            <h3 class="detail-section-title">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="4 17 10 11 4 5"></polyline>
+                                    <line x1="12" y1="19" x2="20" y2="19"></line>
+                                </svg>
+                                Local Orchestration
+                            </h3>
+                            <div class="detail-description" style="font-size: 0.95rem;">
+                                <p>The services are containerized to eliminate version conflicts and ease deployment workflows.</p>
+                                
+                                <p style="margin-top: 15px; margin-bottom: 5px;">Compile and spin up containers in detached mode:</p>
+                                <div class="command-block">
+                                    <span class="command-text" id="cmd-docker">docker-compose up --build -d</span>
+                                    <button class="command-btn" id="btn-docker" onclick="copyCommand('cmd-docker', 'btn-docker')">Copy</button>
+                                </div>
+                                <p style="font-size: 0.85rem; color: var(--color-text-muted);">
+                                    Note: This automatically initializes the local PostgreSQL database (<code>sysgest_db</code>), maps backend REST APIs on port <code>8001</code>, and serves the frontend on port <code>5174</code>. Initial SQL seed structures are run automatically.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Project Structure Tree -->
+                        <div class="detail-section-card">
+                            <h3 class="detail-section-title">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                Directory Structure
+                            </h3>
+                            <div class="tree-container">
+                                <div class="tree-folder">SYS-GEST-CLINIC/</div>
+                                <div>├── <span class="tree-folder">backend/</span><span class="tree-comment"># FastAPI API service</span></div>
+                                <div>│   ├── <span class="tree-folder">app/</span><span class="tree-comment"># Controllers and logic</span></div>
+                                <div>│   └── <span class="tree-folder">database/</span><span class="tree-comment"># DB schemas and seeds</span></div>
+                                <div>├── <span class="tree-folder">frontend/</span><span class="tree-comment"># React Web UI</span></div>
+                                <div>│   ├── <span class="tree-folder">src/</span><span class="tree-comment"># Components and styling</span></div>
+                                <div>│   └── <span class="tree-folder">public/</span><span class="tree-comment"># Static site assets</span></div>
+                                <div>├── <span class="tree-file">docker-compose.yml</span></div>
+                                <div>└── <span class="tree-file">README.md</span></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Area -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 Gabriel Chacón. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="https://github.com/GabrielChaconA" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://www.linkedin.com/in/gabriel-chac%C3%B3n-arellano-29ab29257/" target="_blank"
+                        rel="noopener noreferrer">LinkedIn</a>
+                    <a href="index.html" rel="noopener noreferrer">Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Interactive Gallery Logic
+            const thumbs = document.querySelectorAll('.gallery-thumb');
+            const mainImg = document.getElementById('main-gallery-image');
+
+            thumbs.forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    // Remove active class from all
+                    thumbs.forEach(t => t.classList.remove('active'));
+                    // Add active class to clicked
+                    thumb.classList.add('active');
+
+                    // Smooth transition
+                    mainImg.style.opacity = '0';
+                    setTimeout(() => {
+                        mainImg.src = thumb.getAttribute('data-large');
+                        mainImg.alt = thumb.querySelector('img').alt;
+                        mainImg.style.opacity = '1';
+                    }, 180);
+                });
+            });
+        });
+
+        // Copy command block function
+        function copyCommand(elementId, buttonId) {
+            const textToCopy = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const btn = document.getElementById(buttonId);
+                const originalText = btn.innerText;
+                btn.innerText = 'Copied!';
+                btn.style.background = 'var(--color-accent-emerald)';
+                btn.style.borderColor = 'var(--color-accent-emerald)';
+                btn.style.color = '#ffffff';
+
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.style.background = '';
+                    btn.style.borderColor = '';
+                    btn.style.color = '';
+                }, 1500);
+            }).catch(err => {
+                console.error('Error copying text: ', err);
+            });
+        }
+    </script>
+</body>
+
+</html>
