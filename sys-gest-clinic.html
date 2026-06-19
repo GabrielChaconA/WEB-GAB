@@ -30,17 +30,40 @@
             align-items: center;
             justify-content: center;
             background: rgba(5, 8, 17, 0.6);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            border: 1px solid var(--color-glass-border);
+            margin-bottom: 16px;
         }
         .gallery-main img {
             height: 100%;
             width: auto;
             object-fit: contain;
             margin: 0 auto;
+            transition: opacity 0.2s ease-in-out;
         }
         .gallery-thumbnails {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 12px;
+            overflow-x: auto;
+            padding: 8px 4px 16px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--color-accent-violet) var(--bg-primary);
+        }
+        .gallery-thumbnails::-webkit-scrollbar {
+            height: 6px;
+        }
+        .gallery-thumbnails::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+        }
+        .gallery-thumbnails::-webkit-scrollbar-thumb {
+            background: var(--bg-tertiary);
+            border-radius: 10px;
+        }
+        .gallery-thumbnails::-webkit-scrollbar-thumb:hover {
+            background: var(--color-accent-violet);
         }
         .gallery-thumb {
             width: 70px;
@@ -48,11 +71,81 @@
             aspect-ratio: auto;
             flex-shrink: 0;
             background: rgba(5, 8, 17, 0.4);
+            border: 2px solid transparent;
+            border-radius: var(--border-radius-sm);
+            cursor: pointer;
+            overflow: hidden;
+            transition: var(--transition-fast);
         }
         .gallery-thumb img {
             height: 100%;
             width: 100%;
             object-fit: contain;
+            transition: var(--transition-fast);
+        }
+        .gallery-thumb:hover {
+            transform: translateY(-2px);
+            border-color: rgba(139, 92, 246, 0.4);
+        }
+        .gallery-thumb.active {
+            border-color: var(--color-accent-violet);
+            box-shadow: 0 0 12px var(--color-accent-violet-glow);
+            transform: scale(1.05);
+        }
+        
+        /* Custom styles for the repository mapping table */
+        .mapping-table-container {
+            overflow-x: auto;
+            background: var(--bg-secondary);
+            border: 1px solid var(--color-glass-border);
+            border-radius: var(--border-radius-md);
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .mapping-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.92rem;
+            color: var(--color-text-secondary);
+            min-width: 650px;
+        }
+        .mapping-table th, .mapping-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--color-glass-border);
+        }
+        .mapping-table th {
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--color-text-primary);
+            font-family: var(--font-title);
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+        .mapping-table tr:last-child td {
+            border-bottom: none;
+        }
+        .mapping-table tr:hover td {
+            background: rgba(255, 255, 255, 0.01);
+            color: var(--color-text-primary);
+        }
+        .mapping-highlight {
+            font-family: 'Consolas', monospace;
+            font-size: 0.85rem;
+            color: #c084fc; /* soft violet/pink for frontend */
+            background: rgba(139, 92, 246, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid rgba(139, 92, 246, 0.15);
+        }
+        .mapping-highlight.backend {
+            color: #60a5fa; /* soft blue for backend */
+            background: rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.15);
+        }
+        .mapping-image-name {
+            font-weight: 600;
+            color: var(--color-text-primary);
         }
     </style>
 </head>
@@ -94,15 +187,7 @@
                 </p>
 
                 <div class="project-detail-ctas">
-                    <a href="https://devstar-web-1.onrender.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                        View Live Demo
-                    </a>
-                    <a href="https://github.com/IsraelRamirezMorales/SYS-GEST-CLINIC.git" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                    <a href="https://github.com/IsraelRamirezMorales/SYS-GEST-CLINIC.git" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
                         <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                         </svg>
@@ -140,6 +225,30 @@
                                 </div>
                                 <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/REGISTROS.png">
                                     <img src="assets/respository images/Gestion clinica/REGISTROS.png" alt="Clinical Reports & Statistics">
+                                </div>
+                                <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/Agregar un paciente.png">
+                                    <img src="assets/respository images/Gestion clinica/Agregar un paciente.png" alt="Add New Patient">
+                                </div>
+                                <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/mis pacientes.png">
+                                    <img src="assets/respository images/Gestion clinica/mis pacientes.png" alt="My Patients Directory">
+                                </div>
+                                <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/vista de todos mis pacientes.png">
+                                    <img src="assets/respository images/Gestion clinica/vista de todos mis pacientes.png" alt="Full Patients View">
+                                </div>
+                                <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/Notas iniciales del paciente.png">
+                                    <img src="assets/respository images/Gestion clinica/Notas iniciales del paciente.png" alt="Initial Clinical Notes">
+                                </div>
+                                <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/ventana emergente de pdf.png">
+                                    <img src="assets/respository images/Gestion clinica/ventana emergente de pdf.png" alt="PDF Export Dialog">
+                                </div>
+                                <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/pdf exportado.png">
+                                    <img src="assets/respository images/Gestion clinica/pdf exportado.png" alt="Exported PDF Report">
+                                </div>
+                                <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/Cambiar foto de perfil.png">
+                                    <img src="assets/respository images/Gestion clinica/Cambiar foto de perfil.png" alt="Change Profile Picture & Webcam">
+                                </div>
+                                <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/manejo de errores.png">
+                                    <img src="assets/respository images/Gestion clinica/manejo de errores.png" alt="System Error Handling & Validations">
                                 </div>
                             </div>
                         </div>
@@ -184,7 +293,7 @@
                                 </h3>
                                 <div class="detail-description">
                                     <p>
-                                        The application consists of four key architectural modules that guarantee system integrity and user ergonomics:
+                                        The application consists of five key architectural modules that guarantee system integrity and user ergonomics:
                                     </p>
 
                                     <div class="modes-grid">
@@ -204,6 +313,110 @@
                                             <h4>BI operational Stats</h4>
                                             <p>Processes check-in/out records into charts. Displays treatment distributions, specialist metrics, and clinical efficiency reports.</p>
                                         </div>
+                                        <div class="mode-card">
+                                            <h4>Dynamic PDF Export</h4>
+                                            <p>Allows doctors and administrators to generate structured, professional PDF documents. Features an interactive modal to customize the data to be exported (such as complete medical history, notes, or patient progress summaries), ready for printing or digital sharing.</p>
+                                        </div>
+                                    </div>
+                            </div>
+
+                            <!-- Mapeo Visual del Sistema y del Repositorio -->
+                            <div class="detail-section-card">
+                                <h3 class="detail-section-title">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                                    </svg>
+                                    Visual Tour &amp; Repository Mapping
+                                </h3>
+                                <div class="detail-description">
+                                    <p>
+                                        Below is the mapping of each view screenshot from the gallery to its corresponding module code files in the repository.
+                                    </p>
+                                    <div class="mapping-table-container">
+                                        <table class="mapping-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>View / Screenshot</th>
+                                                    <th>Core Functionality</th>
+                                                    <th>Frontend Module</th>
+                                                    <th>Backend Module</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="mapping-image-name">LOGIN.png</td>
+                                                    <td>Access control, Bcrypt authentication and session management.</td>
+                                                    <td><span class="mapping-highlight">src/components/Login.jsx</span></td>
+                                                    <td><span class="mapping-highlight backend">app/routers/auth.py</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="mapping-image-name">HOME PAGE.png</td>
+                                                    <td>Administrator and therapist main interactive dashboard.</td>
+                                                    <td><span class="mapping-highlight">src/components/Home.jsx</span></td>
+                                                    <td><span class="mapping-highlight backend">app/routers/stats.py</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="mapping-image-name">CALENDARIO.png</td>
+                                                    <td>Smart scheduling, validation, and collision-prevention engine.</td>
+                                                    <td><span class="mapping-highlight">src/components/Calendar.jsx</span></td>
+                                                    <td><span class="mapping-highlight backend">app/routers/appointments.py</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="mapping-image-name">REGISTROS.png</td>
+                                                    <td>Financial ledger transactions and general clinical logs.</td>
+                                                    <td><span class="mapping-highlight">src/components/Reports.jsx</span></td>
+                                                    <td><span class="mapping-highlight backend">app/routers/billing.py</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="mapping-image-name">Agregar un paciente.png</td>
+                                                    <td>Clinical registration form and metadata validation.</td>
+                                                    <td><span class="mapping-highlight">src/components/AddPatient.jsx</span></td>
+                                                    <td><span class="mapping-highlight backend">app/routers/patients.py</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="mapping-image-name">mis pacientes.png</td>
+                                                    <td>Patient index with text filtering and quick medical stats.</td>
+                                                    <td><span class="mapping-highlight">src/components/PatientsList.jsx</span></td>
+                                                    <td><span class="mapping-highlight backend">app/routers/patients.py</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="mapping-image-name">vista de todos...</td>
+                                                    <td>General patient directory displaying general summaries.</td>
+                                                    <td><span class="mapping-highlight">src/components/PatientsList.jsx</span></td>
+                                                    <td><span class="mapping-highlight backend">app/routers/patients.py</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="mapping-image-name">Notas iniciales...</td>
+                                                    <td>Clinical history assessment and rehabilitation tracker notes.</td>
+                                                    <td><span class="mapping-highlight">src/components/ClinicalNotes.jsx</span></td>
+                                                    <td><span class="mapping-highlight backend">app/routers/records.py</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="mapping-image-name">ventana emergente...</td>
+                                                    <td>Export customization filters (date ranges, patient details).</td>
+                                                    <td><span class="mapping-highlight">src/components/PdfExportModal.jsx</span></td>
+                                                    <td><span class="mapping-highlight backend">app/services/pdf_generator.py</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="mapping-image-name">pdf exportado.png</td>
+                                                    <td>Generated PDF file layout ready for physical printing.</td>
+                                                    <td><span class="mapping-highlight">Client-side rendering / Canvas</span></td>
+                                                    <td><span class="mapping-highlight backend">app/services/pdf_generator.py</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="mapping-image-name">Cambiar foto...</td>
+                                                    <td>Webcam API integration for therapist avatar capture.</td>
+                                                    <td><span class="mapping-highlight">src/components/ProfileSettings.jsx</span></td>
+                                                    <td><span class="mapping-highlight backend">app/routers/users.py</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="mapping-image-name">manejo de errores.png</td>
+                                                    <td>Real-time form validations and descriptive alert modals.</td>
+                                                    <td><span class="mapping-highlight">src/components/common/Alert.jsx</span></td>
+                                                    <td><span class="mapping-highlight backend">FastAPI Exception Handler</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
