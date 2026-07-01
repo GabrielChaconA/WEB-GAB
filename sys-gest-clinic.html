@@ -19,7 +19,7 @@
         rel="stylesheet">
 
     <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/styles.css?v=2">
 
     <!-- Custom Style Overrides for Mobile-First Screenshots -->
     <style>
@@ -34,28 +34,16 @@
         .gallery-main {
             position: relative;
             width: 320px;
+            max-width: 100%;
             height: 650px;
-            background: #050811;
-            border-radius: 36px;
-            border: 10px solid #1a1a2e;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+            background: transparent;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        .gallery-main::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 24px;
-            background: #1a1a2e;
-            border-bottom-left-radius: 16px;
-            border-bottom-right-radius: 16px;
-            z-index: 20;
         }
         .gallery-main img {
             height: 100%;
@@ -106,11 +94,58 @@
         .image-click-zone.left { left: 0; }
         .image-click-zone.right { right: 0; }
 
-        @media (max-width: 600px) {
-            .gallery-nav.prev { left: 10px; }
-            .gallery-nav.next { right: 10px; }
+        @media (max-width: 768px) {
+            .gallery-main {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 320 / 650;
+                border-radius: 8px;
+            }
+            .gallery-nav.prev { left: 5px; }
+            .gallery-nav.next { right: 5px; }
+            
+            .mapping-table-container {
+                width: 100%;
+                max-width: 100%;
+                min-width: 0;
+            }
+            .mapping-table {
+                min-width: 450px;
+                font-size: 0.8rem;
+                table-layout: fixed;
+            }
+            .mapping-table td, .mapping-table th {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+            .mapping-table th, .mapping-table td {
+                padding: 10px 8px;
+            }
+            .mapping-highlight {
+                font-size: 0.75rem;
+                word-break: break-word;
+            }
+            .project-detail-ctas {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .project-detail-ctas .btn {
+                justify-content: center;
+                width: 100%;
+            }
         }
         
+        /* Centered layout for SYS-GEST-CLINIC */
+        .project-detail-grid.centered-layout {
+            grid-template-columns: 1fr;
+            max-width: 900px;
+            margin: 50px auto 0;
+        }
+        .centered-layout .detail-main-column, 
+        .centered-layout .detail-sidebar-column {
+            width: 100%;
+        }
+
         /* Custom styles for the repository mapping table */
         .mapping-table-container {
             overflow-x: auto;
@@ -221,23 +256,12 @@
         <!-- Project Grid Details -->
         <section style="padding-top: 0;">
             <div class="section-container">
-                <div class="project-detail-grid">
+                <div class="project-detail-grid centered-layout">
                     
                     <!-- Left Column: Media & Core Info -->
                     <div class="detail-main-column">
-                        
-                        <!-- Interactive Screenshot Gallery -->
-                        <div class="gallery-container">
-                            <button class="gallery-nav prev" id="btn-prev">❮</button>
-                            <div class="gallery-main">
-                                <div class="image-click-zone left" id="zone-prev"></div>
-                                <div class="image-click-zone right" id="zone-next"></div>
-                                <img id="main-gallery-image" src="assets/respository images/Gestion clinica/LOGIN.png" alt="Login Screen">
-                            </div>
-                            <button class="gallery-nav next" id="btn-next">❯</button>
-                        </div>
 
-                        <div style="margin-top: 40px;">
+                        <div>
                             <!-- Purpose & Context -->
                             <div class="detail-section-card">
                                 <h3 class="detail-section-title">
@@ -262,6 +286,17 @@
                                         <li><strong>Role Integration:</strong> Unifies administrative management and medical roles into a single secure access workflow.</li>
                                     </ul>
                                 </div>
+                            </div>
+
+                            <!-- Interactive Screenshot Gallery -->
+                            <div class="gallery-container" style="margin-top: 40px; margin-bottom: 40px;">
+                                <button class="gallery-nav prev" id="btn-prev">❮</button>
+                                <div class="gallery-main">
+                                    <div class="image-click-zone left" id="zone-prev"></div>
+                                    <div class="image-click-zone right" id="zone-next"></div>
+                                    <img id="main-gallery-image" src="assets/respository images/Gestion clinica/LOGIN.png" alt="Login Screen">
+                                </div>
+                                <button class="gallery-nav next" id="btn-next">❯</button>
                             </div>
 
                             <!-- Modules & Functionality -->
