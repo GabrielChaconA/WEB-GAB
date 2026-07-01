@@ -23,74 +23,92 @@
 
     <!-- Custom Style Overrides for Mobile-First Screenshots -->
     <style>
+        .gallery-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+            width: 100%;
+        }
         .gallery-main {
-            aspect-ratio: auto;
-            height: 550px;
+            position: relative;
+            width: 320px;
+            height: 650px;
+            background: #050811;
+            border-radius: 36px;
+            border: 10px solid #1a1a2e;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(5, 8, 17, 0.6);
-            border-radius: var(--border-radius-md);
-            overflow: hidden;
-            border: 1px solid var(--color-glass-border);
-            margin-bottom: 16px;
+        }
+        .gallery-main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 24px;
+            background: #1a1a2e;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            z-index: 20;
         }
         .gallery-main img {
             height: 100%;
-            width: auto;
-            object-fit: contain;
-            margin: 0 auto;
-            transition: opacity 0.2s ease-in-out;
-        }
-        .gallery-thumbnails {
-            display: flex;
-            justify-content: flex-start;
-            gap: 12px;
-            overflow-x: auto;
-            padding: 8px 4px 16px;
-            scrollbar-width: thin;
-            scrollbar-color: var(--color-accent-violet) var(--bg-primary);
-        }
-        .gallery-thumbnails::-webkit-scrollbar {
-            height: 6px;
-        }
-        .gallery-thumbnails::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 10px;
-        }
-        .gallery-thumbnails::-webkit-scrollbar-thumb {
-            background: var(--bg-tertiary);
-            border-radius: 10px;
-        }
-        .gallery-thumbnails::-webkit-scrollbar-thumb:hover {
-            background: var(--color-accent-violet);
-        }
-        .gallery-thumb {
-            width: 70px;
-            height: 90px;
-            aspect-ratio: auto;
-            flex-shrink: 0;
-            background: rgba(5, 8, 17, 0.4);
-            border: 2px solid transparent;
-            border-radius: var(--border-radius-sm);
-            cursor: pointer;
-            overflow: hidden;
-            transition: var(--transition-fast);
-        }
-        .gallery-thumb img {
-            height: 100%;
             width: 100%;
-            object-fit: contain;
-            transition: var(--transition-fast);
+            object-fit: cover;
+            transition: opacity 0.3s ease-in-out;
         }
-        .gallery-thumb:hover {
-            transform: translateY(-2px);
-            border-color: rgba(139, 92, 246, 0.4);
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s;
+            z-index: 10;
+            backdrop-filter: blur(5px);
         }
-        .gallery-thumb.active {
-            border-color: var(--color-accent-violet);
-            box-shadow: 0 0 12px var(--color-accent-violet-glow);
-            transform: scale(1.05);
+        .gallery-nav:hover {
+            background: rgba(139, 92, 246, 0.3);
+            border-color: rgba(139, 92, 246, 0.5);
+            transform: translateY(-50%) scale(1.1);
+        }
+        .gallery-nav.prev {
+            left: calc(50% - 240px);
+        }
+        .gallery-nav.next {
+            right: calc(50% - 240px);
+        }
+        
+        /* Clickable zones over the image */
+        .image-click-zone {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            z-index: 15;
+            cursor: pointer;
+        }
+        .image-click-zone.left { left: 0; }
+        .image-click-zone.right { right: 0; }
+
+        @media (max-width: 600px) {
+            .gallery-nav.prev { left: 10px; }
+            .gallery-nav.next { right: 10px; }
         }
         
         /* Custom styles for the repository mapping table */
@@ -210,47 +228,13 @@
                         
                         <!-- Interactive Screenshot Gallery -->
                         <div class="gallery-container">
+                            <button class="gallery-nav prev" id="btn-prev">❮</button>
                             <div class="gallery-main">
+                                <div class="image-click-zone left" id="zone-prev"></div>
+                                <div class="image-click-zone right" id="zone-next"></div>
                                 <img id="main-gallery-image" src="assets/respository images/Gestion clinica/LOGIN.png" alt="Login Screen">
                             </div>
-                            <div class="gallery-thumbnails">
-                                <div class="gallery-thumb active" data-large="assets/respository images/Gestion clinica/LOGIN.png">
-                                    <img src="assets/respository images/Gestion clinica/LOGIN.png" alt="Login Screen">
-                                </div>
-                                <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/HOME PAGE.png">
-                                    <img src="assets/respository images/Gestion clinica/HOME PAGE.png" alt="Main Dashboard">
-                                </div>
-                                <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/CALENDARIO.png">
-                                    <img src="assets/respository images/Gestion clinica/CALENDARIO.png" alt="Clinical Calendar">
-                                </div>
-                                <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/REGISTROS.png">
-                                    <img src="assets/respository images/Gestion clinica/REGISTROS.png" alt="Clinical Reports & Statistics">
-                                </div>
-                                <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/Agregar un paciente.png">
-                                    <img src="assets/respository images/Gestion clinica/Agregar un paciente.png" alt="Add New Patient">
-                                </div>
-                                <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/mis pacientes.png">
-                                    <img src="assets/respository images/Gestion clinica/mis pacientes.png" alt="My Patients Directory">
-                                </div>
-                                <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/vista de todos mis pacientes.png">
-                                    <img src="assets/respository images/Gestion clinica/vista de todos mis pacientes.png" alt="Full Patients View">
-                                </div>
-                                <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/Notas iniciales del paciente.png">
-                                    <img src="assets/respository images/Gestion clinica/Notas iniciales del paciente.png" alt="Initial Clinical Notes">
-                                </div>
-                                <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/ventana emergente de pdf.png">
-                                    <img src="assets/respository images/Gestion clinica/ventana emergente de pdf.png" alt="PDF Export Dialog">
-                                </div>
-                                <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/pdf exportado.png">
-                                    <img src="assets/respository images/Gestion clinica/pdf exportado.png" alt="Exported PDF Report">
-                                </div>
-                                <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/Cambiar foto de perfil.png">
-                                    <img src="assets/respository images/Gestion clinica/Cambiar foto de perfil.png" alt="Change Profile Picture & Webcam">
-                                </div>
-                                <div class="gallery-thumb" data-large="assets/respository images/Gestion clinica/manejo de errores.png">
-                                    <img src="assets/respository images/Gestion clinica/manejo de errores.png" alt="System Error Handling & Validations">
-                                </div>
-                            </div>
+                            <button class="gallery-nav next" id="btn-next">❯</button>
                         </div>
 
                         <div style="margin-top: 40px;">
@@ -545,25 +529,46 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Interactive Gallery Logic
-            const thumbs = document.querySelectorAll('.gallery-thumb');
             const mainImg = document.getElementById('main-gallery-image');
+            const btnPrev = document.getElementById('btn-prev');
+            const btnNext = document.getElementById('btn-next');
+            const zonePrev = document.getElementById('zone-prev');
+            const zoneNext = document.getElementById('zone-next');
 
-            thumbs.forEach(thumb => {
-                thumb.addEventListener('click', () => {
-                    // Remove active class from all
-                    thumbs.forEach(t => t.classList.remove('active'));
-                    // Add active class to clicked
-                    thumb.classList.add('active');
+            const images = [
+                { src: 'assets/respository images/Gestion clinica/LOGIN.png', alt: 'Login Screen' },
+                { src: 'assets/respository images/Gestion clinica/HOME PAGE.png', alt: 'Main Dashboard' },
+                { src: 'assets/respository images/Gestion clinica/CALENDARIO.png', alt: 'Clinical Calendar' },
+                { src: 'assets/respository images/Gestion clinica/REGISTROS.png', alt: 'Clinical Reports & Statistics' },
+                { src: 'assets/respository images/Gestion clinica/Agregar un paciente.png', alt: 'Add New Patient' },
+                { src: 'assets/respository images/Gestion clinica/mis pacientes.png', alt: 'My Patients Directory' },
+                { src: 'assets/respository images/Gestion clinica/vista de todos mis pacientes.png', alt: 'Full Patients View' },
+                { src: 'assets/respository images/Gestion clinica/Notas iniciales del paciente.png', alt: 'Initial Clinical Notes' },
+                { src: 'assets/respository images/Gestion clinica/ventana emergente de pdf.png', alt: 'PDF Export Dialog' },
+                { src: 'assets/respository images/Gestion clinica/pdf exportado.png', alt: 'Exported PDF Report' },
+                { src: 'assets/respository images/Gestion clinica/Cambiar foto de perfil.png', alt: 'Change Profile Picture & Webcam' },
+                { src: 'assets/respository images/Gestion clinica/manejo de errores.png', alt: 'System Error Handling & Validations' }
+            ];
 
-                    // Smooth transition
-                    mainImg.style.opacity = '0';
-                    setTimeout(() => {
-                        mainImg.src = thumb.getAttribute('data-large');
-                        mainImg.alt = thumb.querySelector('img').alt;
-                        mainImg.style.opacity = '1';
-                    }, 180);
-                });
-            });
+            let currentIndex = 0;
+
+            const changeImage = (newIndex) => {
+                if (newIndex < 0) newIndex = images.length - 1;
+                if (newIndex >= images.length) newIndex = 0;
+                currentIndex = newIndex;
+
+                mainImg.style.opacity = '0';
+                setTimeout(() => {
+                    mainImg.src = images[currentIndex].src;
+                    mainImg.alt = images[currentIndex].alt;
+                    mainImg.style.opacity = '1';
+                }, 200);
+            };
+
+            btnPrev.addEventListener('click', () => changeImage(currentIndex - 1));
+            btnNext.addEventListener('click', () => changeImage(currentIndex + 1));
+            zonePrev.addEventListener('click', () => changeImage(currentIndex - 1));
+            zoneNext.addEventListener('click', () => changeImage(currentIndex + 1));
         });
 
         // Copy command block function
