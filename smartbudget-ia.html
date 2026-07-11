@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartBudget-IA | Gabriel Chacón Portfolio</title>
+
+    <!-- Meta Description for SEO -->
+    <meta name="description"
+        content="Project details of SmartBudget-IA, a personal finance intelligence platform by Gabriel Chacón.">
+    <meta name="author" content="Gabriel Chacón">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="assets/css/styles.css?v=2">
+
+    <!-- Custom Style Overrides for Mobile-First Screenshots -->
+    <style>
+        .gallery-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 0;
+            width: 100%;
+        }
+        .gallery-main {
+            position: relative;
+            width: 800px;
+            max-width: 100%;
+            aspect-ratio: 16 / 9;
+            background: transparent;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .gallery-main img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+        }
+        .gallery-nav:hover {
+            background: rgba(139, 92, 246, 0.3);
+            border-color: rgba(139, 92, 246, 0.5);
+            transform: translateY(-50%) scale(1.1);
+        }
+        .gallery-nav.prev {
+            left: 20px;
+        }
+        .gallery-nav.next {
+            right: 20px;
+        }
+        
+        /* Clickable zones over the image */
+        .image-click-zone {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            z-index: 15;
+            cursor: pointer;
+        }
+        .image-click-zone.left { left: 0; }
+        .image-click-zone.right { right: 0; }
+
+        @media (max-width: 768px) {
+            .gallery-nav.prev { left: 5px; }
+            .gallery-nav.next { right: 5px; }
+            
+            .project-detail-ctas {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .project-detail-ctas .btn {
+                justify-content: center;
+                width: 100%;
+            }
+        }
+        
+        .project-detail-grid.centered-layout {
+            grid-template-columns: 1fr;
+            max-width: 900px;
+            margin: 50px auto 0;
+        }
+        .centered-layout .detail-main-column, 
+        .centered-layout .detail-sidebar-column {
+            width: 100%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Background Gradient Overlay & Grid -->
+    <div class="bg-grid"></div>
+    <div class="bg-radial"></div>
+
+    <!-- Navigation Header -->
+    <header class="main-header scrolled" id="header">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <span class="brand-text">Gabriel<span class="accent-dot">.</span>Chacón</span>
+            </a>
+
+            <div class="nav-actions">
+                <a href="index.html#portfolio-tabs" class="cta-btn-header" style="background: var(--bg-tertiary); border: 1px solid var(--color-glass-border); color: var(--color-text-primary); box-shadow: none;">
+                    ← Back to Portfolio
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main style="padding-bottom: 80px;">
+        <!-- Project Detail Header / Hero -->
+        <section class="project-detail-header">
+            <div class="section-container">
+                <div class="project-detail-meta">
+                    <span class="badge-tag primary">Vue 3</span>
+                    <span class="badge-tag secondary">Laravel 11</span>
+                    <span class="badge-tag">TypeScript</span>
+                    <span class="badge-tag">Docker</span>
+                </div>
+                <h1 class="project-detail-title text-gradient">SmartBudget-IA</h1>
+                <p class="project-detail-subtitle">
+                    Una plataforma de inteligencia financiera personal de próxima generación. <br>
+                    <strong>Nota importante:</strong> Esta es la versión 1.0 funcional sin IA, la integración de Inteligencia Artificial se usará luego, pero de momento es un sistema completamente operativo.
+                </p>
+
+                <div class="project-detail-ctas">
+                    <a href="https://github.com/GabrielChaconA/SmartBudget" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                        View GitHub Repository
+                    </a>
+                    <a href="index.html#portfolio-tabs" class="btn btn-outline">
+                        ← Return to Portfolio
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Grid Details -->
+        <section style="padding-top: 0;">
+            <div class="section-container">
+                <div class="project-detail-grid centered-layout">
+                    
+                    <!-- Left Column: Media & Core Info -->
+                    <div class="detail-main-column">
+
+                        <div>
+                            <!-- Purpose & Context -->
+                            <div class="detail-section-card">
+                                <h3 class="detail-section-title">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                                        <line x1="4" y1="22" x2="4" y2="15"></line>
+                                    </svg>
+                                    Project Purpose &amp; Context
+                                </h3>
+                                <div class="detail-description">
+                                    <p>
+                                        <strong>SmartBudget</strong> actúa como tu CFO (Director Financiero) personal, permitiéndote consolidar liquidez, fondos de emergencia, pagos recurrentes e inversiones diversificadas en un solo panel para conocer tu Patrimonio Neto (Net Worth) en tiempo real.
+                                    </p>
+                                    <p>
+                                        La aplicación ofrece una experiencia fluida (frictionless) al permitir el inicio de sesión seguro utilizando tu cuenta de Google, gracias a la implementación de autenticación delegada (OAuth 2.0).
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Interactive Screenshot Gallery -->
+                            <div class="gallery-container" style="margin-top: 40px; margin-bottom: 40px;">
+                                <button class="gallery-nav prev" id="btn-prev">❮</button>
+                                <div class="gallery-main">
+                                    <div class="image-click-zone left" id="zone-prev"></div>
+                                    <div class="image-click-zone right" id="zone-next"></div>
+                                    <img id="main-gallery-image" src="assets/respository images/SmartBudget/home.png" alt="Dashboard Principal">
+                                </div>
+                                <button class="gallery-nav next" id="btn-next">❯</button>
+                            </div>
+
+                            <!-- Modules & Functionality -->
+                            <div class="detail-section-card">
+                                <h3 class="detail-section-title">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="3" width="7" height="7"></rect>
+                                        <rect x="14" y="3" width="7" height="7"></rect>
+                                        <rect x="14" y="14" width="7" height="7"></rect>
+                                        <rect x="3" y="14" width="7" height="7"></rect>
+                                    </svg>
+                                    Funcionalidad por Pestañas
+                                </h3>
+                                <div class="detail-description">
+                                    <div class="modes-grid">
+                                        <div class="mode-card">
+                                            <h4>Dashboard Principal (Home)</h4>
+                                            <p>Panel central para ver tu panorama financiero global. Muestra tu Net Worth exacto y soporta conversión de divisas automática (USD/MXN).</p>
+                                        </div>
+                                        <div class="mode-card">
+                                            <h4>Gestión de Fondos (Wallets/Funds)</h4>
+                                            <p>Administra liquidez creando cajas personalizadas para organizar dinero, usando etiquetas de presupuesto y registrando flujos de caja manuales.</p>
+                                        </div>
+                                        <div class="mode-card">
+                                            <h4>Panel de Inversiones</h4>
+                                            <p>Rastrea criptomonedas, acciones, ETFs y apuestas deportivas. Calcula automáticamente el ROI/ROE basado en tu inversión inicial y valor actual.</p>
+                                        </div>
+                                        <div class="mode-card">
+                                            <h4>Top de Inversiones (Gainers)</h4>
+                                            <p>Se conecta con oráculos de precios para mostrar los activos con mejor rendimiento global para la toma de decisiones informadas.</p>
+                                        </div>
+                                        <div class="mode-card">
+                                            <h4>Suscripciones (Memberships)</h4>
+                                            <p>Lista todas las plataformas mensuales/anuales (Netflix, Spotify, etc.) para visualizar la fuga de capital y proyectar gastos fijos.</p>
+                                        </div>
+                                        <div class="mode-card">
+                                            <h4>Análisis Avanzado (Analytics)</h4>
+                                            <p>Gráficos dinámicos e históricos que comparan ingresos vs. gastos, mostrando tasas de ahorro y recomendaciones patrimoniales.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Development Team -->
+                            <div class="detail-section-card">
+                                <h3 class="detail-section-title">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                    Desarrollo Individual
+                                </h3>
+                                <div class="detail-description">
+                                    <p>
+                                        A diferencia de proyectos colaborativos, <strong>SmartBudget</strong> fue desarrollado de principio a fin de manera individual. Todo el ecosistema del sistema, incluyendo la arquitectura Backend y la API REST en Laravel, el diseño y programación del Frontend en Vue 3, así como la estructura y despliegue del proyecto, fueron realizados íntegramente por mí, sin la participación de otros integrantes de equipo.
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: Sidebar Details -->
+                    <div class="detail-sidebar-column">
+                        
+                        <!-- Tech Stack Tags -->
+                        <div class="detail-section-card">
+                            <h3 class="detail-section-title">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                                Tecnologías Utilizadas
+                            </h3>
+                            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px;">
+                                <span class="tag" style="background: rgba(16, 185, 129, 0.1); color: #10b981; border-color: rgba(16, 185, 129, 0.2);">Vue.js 3</span>
+                                <span class="tag" style="background: rgba(239, 68, 68, 0.1); color: #ef4444; border-color: rgba(239, 68, 68, 0.2);">Laravel 11</span>
+                                <span class="tag">TypeScript</span>
+                                <span class="tag">Tailwind CSS</span>
+                                <span class="tag">shadcn-vue</span>
+                                <span class="tag">PHP 8.2</span>
+                                <span class="tag">MySQL 8.0</span>
+                                <span class="tag">Docker</span>
+                                <span class="tag">ECharts</span>
+                            </div>
+                        </div>
+
+                        <!-- APIs Integradas -->
+                        <div class="detail-section-card">
+                            <h3 class="detail-section-title">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                </svg>
+                                APIs de Terceros Integradas
+                            </h3>
+                            <div class="detail-description" style="font-size: 0.95rem;">
+                                <ul class="bullet-list" style="padding-left: 15px;">
+                                    <li><strong>Binance API & CoinGecko:</strong> Cotizaciones y gráficas de criptomonedas.</li>
+                                    <li><strong>Finnhub:</strong> Telemetría del mercado bursátil tradicional (acciones, ETFs).</li>
+                                    <li><strong>OddsAPI:</strong> Rastreo de momios en apuestas deportivas.</li>
+                                    <li><strong>ExchangeRate-API:</strong> Conversión de divisas en tiempo real (USD/MXN) y coberturas.</li>
+                                    <li><strong>Google OAuth 2.0:</strong> Autenticación delegada segura y rápida.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Project Structure Tree -->
+                        <div class="detail-section-card">
+                            <h3 class="detail-section-title">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                Infraestructura
+                            </h3>
+                            <div class="detail-description" style="font-size: 0.95rem;">
+                                <p><strong>Frontend (SPA):</strong> Vue 3 propulsado por Vite, usando vue-router y vue-i18n (Inglés/Español nativo).</p>
+                                <p><strong>Backend (API REST):</strong> Laravel Sanctum (tokens/cookies) y Laravel Socialite.</p>
+                                <p><strong>Despliegue:</strong> Entorno Dockerizado (Laravel Sail) e Infraestructura como Código (IaC) en render.yaml.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Area -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 Gabriel Chacón. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="https://github.com/GabrielChaconA" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://www.linkedin.com/in/gabriel-chac%C3%B3n-arellano-29ab29257/" target="_blank"
+                        rel="noopener noreferrer">LinkedIn</a>
+                    <a href="index.html" rel="noopener noreferrer">Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Interactive Gallery Logic
+            const mainImg = document.getElementById('main-gallery-image');
+            const btnPrev = document.getElementById('btn-prev');
+            const btnNext = document.getElementById('btn-next');
+            const zonePrev = document.getElementById('zone-prev');
+            const zoneNext = document.getElementById('zone-next');
+
+            const images = [
+                { src: 'assets/respository images/SmartBudget/home.png', alt: 'Dashboard Principal' },
+                { src: 'assets/respository images/SmartBudget/login.png', alt: 'Login Screen' },
+                { src: 'assets/respository images/SmartBudget/inversiones.png', alt: 'Panel de Inversiones' },
+                { src: 'assets/respository images/SmartBudget/top de inversiones.png', alt: 'Top de Inversiones' },
+                { src: 'assets/respository images/SmartBudget/found.png', alt: 'Gestión de Fondos' },
+                { src: 'assets/respository images/SmartBudget/subs.png', alt: 'Suscripciones' },
+                { src: 'assets/respository images/SmartBudget/analisis.png', alt: 'Análisis Avanzado' },
+                { src: 'assets/respository images/SmartBudget/perfil.png', alt: 'Perfil y Soporte' }
+            ];
+
+            let currentIndex = 0;
+
+            const changeImage = (newIndex) => {
+                if (newIndex < 0) newIndex = images.length - 1;
+                if (newIndex >= images.length) newIndex = 0;
+                currentIndex = newIndex;
+
+                mainImg.style.opacity = '0';
+                setTimeout(() => {
+                    mainImg.src = images[currentIndex].src;
+                    mainImg.alt = images[currentIndex].alt;
+                    mainImg.style.opacity = '1';
+                }, 200);
+            };
+
+            btnPrev.addEventListener('click', () => changeImage(currentIndex - 1));
+            btnNext.addEventListener('click', () => changeImage(currentIndex + 1));
+            zonePrev.addEventListener('click', () => changeImage(currentIndex - 1));
+            zoneNext.addEventListener('click', () => changeImage(currentIndex + 1));
+        });
+    </script>
+</body>
+
+</html>
